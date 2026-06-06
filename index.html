@@ -14,11 +14,12 @@
 body {
   margin: 0;
   font-family: 'Press Start 2P', cursive;
-  background: linear-gradient(135deg, #140000, #2a000f);
+  background: linear-gradient(135deg, #120000, #2a0010);
   color: white;
   overflow: hidden;
 }
 
+/* scanlines */
 body::before {
   content: "";
   position: fixed;
@@ -53,7 +54,12 @@ h1 {
   line-height: 1.8;
 }
 
-/* BOTTONI */
+p {
+  font-size: 10px;
+  color: #ffb3c6;
+}
+
+/* BUTTON */
 button {
   font-family: 'Press Start 2P', cursive;
   background: black;
@@ -72,11 +78,13 @@ button {
 /* ICON */
 .icon {
   width: 90px;
-  margin: 10px;
   cursor: pointer;
+  margin: 10px;
+  transition: transform 0.2s;
 }
+.icon:hover { transform: scale(1.1); }
 
-/* MEMORY */
+/* MEMORY GRID */
 .board {
   display: grid;
   grid-template-columns: repeat(3, 80px);
@@ -92,8 +100,9 @@ button {
   align-items: center;
   justify-content: center;
   font-size: 30px;
-  cursor: pointer;
   background: black;
+  cursor: pointer;
+  user-select: none;
 }
 
 /* POPUP */
@@ -135,18 +144,15 @@ button {
 
 <!-- MEMORY -->
 <div class="screen" id="s3">
-
   <h1>MEMORY LEVEL 🎮</h1>
   <p>Trova tutte le coppie 💕</p>
-
   <div class="board" id="board"></div>
-
 </div>
 
-<!-- REGALI -->
+<!-- REGALO -->
 <div class="screen" id="s4">
 
-  <h1>QUESTI SONO PER TE! 💝</h1>
+  <h1>QUESTI SONO PER TE 💝</h1>
 
   <div onclick="music()">
     <img class="icon" src="https://media.giphy.com/media/13borq7Zo2kulO/giphy.gif">
@@ -178,24 +184,31 @@ let matched = 0;
 
 const emojis = ["💖","🎵","🎁","💖","🎵","🎁"];
 
+/* NAVIGAZIONE */
 function next(n){
   document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
   document.getElementById('s'+n).classList.add('active');
 
-  if(n === 3) startGame();
+  if(n === 3){
+    setTimeout(startGame, 300);
+  }
 }
 
+/* MEMORY */
 function startGame(){
   const board = document.getElementById("board");
   board.innerHTML = "";
 
-  let shuffled = emojis.sort(() => Math.random() - 0.5);
+  matched = 0;
+  flipped = [];
+
+  let shuffled = [...emojis].sort(() => Math.random() - 0.5);
 
   shuffled.forEach(e => {
     let card = document.createElement("div");
     card.className = "card";
-    card.dataset.value = e;
     card.textContent = "❓";
+    card.dataset.value = e;
 
     card.onclick = () => flip(card);
 
@@ -210,7 +223,7 @@ function flip(card){
   flipped.push(card);
 
   if(flipped.length === 2){
-    setTimeout(check, 600);
+    setTimeout(check, 500);
   }
 }
 
@@ -225,24 +238,33 @@ function check(){
   flipped = [];
 
   if(matched === 3){
-    setTimeout(() => next(4), 800);
+    setTimeout(() => next(4), 700);
   }
 }
 
+/* POPUP */
 function photo(){
   document.getElementById("content").innerHTML =
-    "<div>RICORDO 💕</div><img src='foto_coppia.JPG'>";
+    "<div>RICORDO 💕</div><br><img src='foto_coppia.JPG'>";
   document.getElementById("popup").style.display = "block";
 }
 
 function gift(){
   document.getElementById("content").innerHTML =
-    "<div>REGALO 🎁</div><div style='color:#ff4d6d'>LEZIONE DI TENNIS 🎾</div>";
+    `
+    <div style="margin-bottom:10px;">REGALO PER TE:</div>
+    <div style="color:#ff4d6d;margin-bottom:10px;">LEZIONE DI TENNIS 🎾</div>
+    <img src="IMG_3842.jpeg">
+    `;
   document.getElementById("popup").style.display = "block";
 }
 
+/* MUSICA (STABILE) */
 function music(){
-  window.open("https://www.youtube.com/watch?v=tTX6sJeZcmI", "_blank");
+  const audio = new Audio("https://cdn.pixabay.com/audio/2022/03/15/audio_c8b5c8d2d5.mp3");
+  audio.play().catch(() => {
+    window.open("https://www.youtube.com/watch?v=tTX6sJeZcmI", "_blank");
+  });
 }
 
 function closeP(){
