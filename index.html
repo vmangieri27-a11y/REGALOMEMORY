@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>PER TE ❤️</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+
+<style>
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  font-family: 'Press Start 2P', cursive;
+  background: linear-gradient(135deg, #140000, #2a000f);
+  color: white;
+  overflow: hidden;
+}
+
+/* scanlines */
+body::before {
+  content: "";
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  background: repeating-linear-gradient(
+    to bottom,
+    rgba(255,255,255,0.03),
+    rgba(255,255,255,0.03) 1px,
+    transparent 2px,
+    transparent 4px
+  );
+  pointer-events: none;
+}
+
+.screen {
+  display: none;
+  height: 100vh;
+  width: 100vw;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  text-align: center;
+  padding: 20px;
+}
+
+.active { display: flex; }
+
+h1 {
+  font-size: 14px;
+  text-shadow: 0 0 15px #ff4d6d;
+  line-height: 1.8;
+}
+
+/* BOTTONI */
+button {
+  font-family: 'Press Start 2P', cursive;
+  background: black;
+  border: 2px solid #ff4d6d;
+  color: white;
+  padding: 12px;
+  margin-top: 15px;
+}
+
+button:hover {
+  background: #ff4d6d;
+  color: black;
+}
+
+/* GIF */
+.gif {
+  width: 140px;
+  margin: 15px;
+}
+
+/* ICON */
+.icon {
+  width: 90px;
+  margin: 10px;
+  cursor: pointer;
+}
+
+/* POPUP */
+.popup {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: black;
+  border: 2px solid #ff4d6d;
+  padding: 20px;
+  display: none;
+  text-align: center;
+  z-index: 10;
+}
+
+.popup img {
+  max-width: 220px;
+  border: 2px solid white;
+}
+</style>
+</head>
+
+<body>
+
+<!-- 🎵 MUSICA (OPZIONE A - FUNZIONANTE) -->
+<audio id="bgmusic" loop>
+  <source src="https://cdn.pixabay.com/audio/2022/03/15/audio_c8b5c8d2d5.mp3" type="audio/mpeg">
+</audio>
+
+<!-- SCHERMATA 1 -->
+<div class="screen active" id="s1">
+  <img class="gif" src="https://media.giphy.com/media/MDJ9IbxxvDUQM/giphy.gif">
+  <h1>VUOI APRIRE IL REGALO?</h1>
+  <button onclick="next(2)">SI ❤️</button>
+</div>
+
+<!-- SCHERMATA 2 -->
+<div class="screen" id="s2">
+  <img class="gif" src="https://media.giphy.com/media/3oriO6qJiXajN0TyDu/giphy.gif">
+  <h1>TI PROMETTO CHE TI PIACERÀ 💕</h1>
+  <button onclick="next(3)">VEDIAMO IL REGALO 🎁</button>
+</div>
+
+<!-- SCHERMATA 3 -->
+<div class="screen" id="s3">
+
+  <h1>QUESTI SONO PER TE!</h1>
+
+  <!-- MUSICA -->
+  <div onclick="music()">
+    <img class="icon" src="https://media.giphy.com/media/13borq7Zo2kulO/giphy.gif">
+    <p>Una canzone che mi ricorda te 🎵</p>
+  </div>
+
+  <!-- FOTO -->
+  <div onclick="photo()">
+    <img class="icon" src="https://media.giphy.com/media/26AHONQ79FdWZhAI0/giphy.gif">
+    <p>La mia foto preferita di noi 📸</p>
+  </div>
+
+  <!-- REGALO -->
+  <div onclick="gift()">
+    <img class="icon" src="https://media.giphy.com/media/3oEjI6SIIHBdRxXI40/giphy.gif">
+    <p>Il tuo regalo 🎁</p>
+  </div>
+
+</div>
+
+<!-- POPUP -->
+<div class="popup" id="popup">
+  <div id="content"></div>
+  <button onclick="closeP()">CHIUDI</button>
+</div>
+
+<script>
+
+function next(n){
+  document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
+  document.getElementById('s'+n).classList.add('active');
+
+  // 🎵 MUSICA PARTE QUANDO ENTRA NEL GIOCO
+  if(n === 2){
+    document.getElementById("bgmusic").play();
+  }
+}
+
+function photo(){
+  document.getElementById("content").innerHTML =
+    "<div>RICORDO SBLOCCATO 💕</div><img src='foto_coppia.JPG'>";
+  document.getElementById("popup").style.display = "block";
+}
+
+function gift(){
+  document.getElementById("content").innerHTML =
+    "<div>REGALO PER TE 🎁</div><div style='margin-top:10px;color:#ff4d6d'>LEZIONE DI TENNIS 🎾</div>";
+  document.getElementById("popup").style.display = "block";
+}
+
+function music(){
+  document.getElementById("bgmusic").play();
+}
+
+function closeP(){
+  document.getElementById("popup").style.display = "none";
+}
+
+</script>
+
+</body>
+</html>
