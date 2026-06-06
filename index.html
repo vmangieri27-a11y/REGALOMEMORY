@@ -19,7 +19,6 @@ body {
   overflow: hidden;
 }
 
-/* scanlines */
 body::before {
   content: "";
   position: fixed;
@@ -59,17 +58,7 @@ p {
   color: #ffb3c6;
 }
 
-/* BUTTON */
-button {
-  font-family: 'Press Start 2P', cursive;
-  background: black;
-  border: 2px solid #ff4d6d;
-  color: white;
-  padding: 12px;
-  margin-top: 15px;
-}
-
-/* ICONS STABILI */
+/* ICONE SICURE (INLINE SVG STYLE) */
 .icon {
   width: 70px;
   height: 70px;
@@ -99,7 +88,6 @@ button {
   user-select: none;
 }
 
-/* POPUP */
 .popup {
   position: fixed;
   top: 50%;
@@ -117,6 +105,15 @@ button {
   max-width: 240px;
   border: 2px solid white;
   margin-top: 10px;
+}
+
+button {
+  font-family: 'Press Start 2P', cursive;
+  background: black;
+  border: 2px solid #ff4d6d;
+  color: white;
+  padding: 12px;
+  margin-top: 15px;
 }
 </style>
 </head>
@@ -145,26 +142,29 @@ button {
 <!-- REGALO -->
 <div class="screen" id="s4">
 
-<!-- REGALO -->
-<div class="screen" id="s4">
-
   <h1>QUESTI SONO PER TE 💝</h1>
 
   <!-- MUSICA -->
   <div onclick="music()">
-    <img class="icon" src="https://upload.wikimedia.org/wikipedia/commons/5/5f/Music_icon_%28white%29.svg">
+    <svg class="icon" viewBox="0 0 24 24" fill="white">
+      <path d="M12 3v10.55a4 4 0 1 0 2 3.45V7h4V3h-6z"/>
+    </svg>
     <p>Canzone che mi ricorda di te 🎵</p>
   </div>
 
   <!-- FOTO -->
   <div onclick="photo()">
-    <img class="icon" src="https://upload.wikimedia.org/wikipedia/commons/3/3f/Photo_icon_white.svg">
+    <svg class="icon" viewBox="0 0 24 24" fill="white">
+      <path d="M9 2l1.5 2H20a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h3.5L9 2zm3 5a5 5 0 1 0 0 10 5 5 0 0 0 0-10z"/>
+    </svg>
     <p>Foto che mi ricorda di te 📸</p>
   </div>
 
   <!-- REGALO -->
   <div onclick="gift()">
-    <img class="icon" src="https://upload.wikimedia.org/wikipedia/commons/8/8b/Gift_icon_white.svg">
+    <svg class="icon" viewBox="0 0 24 24" fill="white">
+      <path d="M20 7h-3.17A3 3 0 0 0 12 3a3 3 0 0 0-4.83 4H4v4h16V7zm-9-2a1 1 0 1 1 2 0 1 1 0 0 1-2 0zm-7 6v9a2 2 0 0 0 2 2h5V11H4zm10 11h5a2 2 0 0 0 2-2v-9h-7v11z"/>
+    </svg>
     <p>Il tuo regalo 🎁</p>
   </div>
 
