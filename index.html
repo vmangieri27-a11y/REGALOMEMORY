@@ -69,12 +69,6 @@ button {
   margin-top: 15px;
 }
 
-/* GIF */
-.gif {
-  width: 140px;
-  margin: 15px;
-}
-
 /* ICON */
 .icon {
   width: 90px;
@@ -84,7 +78,7 @@ button {
 }
 .icon:hover { transform: scale(1.1); }
 
-/* MEMORY GRID */
+/* MEMORY */
 .board {
   display: grid;
   grid-template-columns: repeat(3, 80px);
@@ -122,6 +116,7 @@ button {
 .popup img {
   max-width: 220px;
   border: 2px solid white;
+  margin-top: 10px;
 }
 </style>
 </head>
@@ -130,16 +125,14 @@ button {
 
 <!-- SCHERMATA 1 -->
 <div class="screen active" id="s1">
-  <img class="gif" src="https://media.giphy.com/media/MDJ9IbxxvDUQM/giphy.gif">
   <h1>VUOI APRIRE IL REGALO?</h1>
   <button onclick="next(2)">SI ❤️</button>
 </div>
 
 <!-- SCHERMATA 2 -->
 <div class="screen" id="s2">
-  <img class="gif" src="https://media.giphy.com/media/3oriO6qJiXajN0TyDu/giphy.gif">
   <h1>TI PROMETTO CHE TI PIACERÀ 💕</h1>
-  <button onclick="next(3)">INIZIA IL GIOCO 🎮</button>
+  <button onclick="next(3)">INIZIA 🎮</button>
 </div>
 
 <!-- MEMORY -->
@@ -155,17 +148,17 @@ button {
   <h1>QUESTI SONO PER TE 💝</h1>
 
   <div onclick="music()">
-    <img class="icon" src="https://media.giphy.com/media/13borq7Zo2kulO/giphy.gif">
+    <img class="icon" src="https://cdn-icons-png.flaticon.com/512/727/727245.png">
     <p>Canzone 🎵</p>
   </div>
 
   <div onclick="photo()">
-    <img class="icon" src="https://media.giphy.com/media/26AHONQ79FdWZhAI0/giphy.gif">
+    <img class="icon" src="https://cdn-icons-png.flaticon.com/512/1077/1077114.png">
     <p>Foto 📸</p>
   </div>
 
   <div onclick="gift()">
-    <img class="icon" src="https://media.giphy.com/media/3oEjI6SIIHBdRxXI40/giphy.gif">
+    <img class="icon" src="https://cdn-icons-png.flaticon.com/512/107/107831.png">
     <p>Regalo 🎁</p>
   </div>
 
@@ -184,7 +177,7 @@ let matched = 0;
 
 const emojis = ["💖","🎵","🎁","💖","🎵","🎁"];
 
-/* NAVIGAZIONE */
+/* NAV */
 function next(n){
   document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
   document.getElementById('s'+n).classList.add('active');
@@ -242,31 +235,37 @@ function check(){
   }
 }
 
-/* POPUP */
-function photo(){
-  document.getElementById("content").innerHTML =
-    "<div>RICORDO 💕</div><br><img src='foto_coppia.JPG'>";
-  document.getElementById("popup").style.display = "block";
-}
-
+/* REGALO */
 function gift(){
   document.getElementById("content").innerHTML =
     `
-    <div style="margin-bottom:10px;">REGALO PER TE:</div>
-    <div style="color:#ff4d6d;margin-bottom:10px;">LEZIONE DI TENNIS 🎾</div>
-    <img src="IMG_3842.jpeg">
+    <div style="font-size:12px;margin-bottom:10px;">
+      REGALO PER TE:
+    </div>
+
+    <div style="color:#ff4d6d;margin-bottom:10px;">
+      LEZIONE DI TENNIS 🎾
+    </div>
+
+    <img src="https://cdn-icons-png.flaticon.com/512/1041/1041888.png">
     `;
+
   document.getElementById("popup").style.display = "block";
 }
 
-/* MUSICA (STABILE) */
-function music(){
-  const audio = new Audio("https://cdn.pixabay.com/audio/2022/03/15/audio_c8b5c8d2d5.mp3");
-  audio.play().catch(() => {
-    window.open("https://www.youtube.com/watch?v=tTX6sJeZcmI", "_blank");
-  });
+/* FOTO */
+function photo(){
+  document.getElementById("content").innerHTML =
+    "<div>LA NOSTRA FOTO 💕</div><img src='foto_coppia.JPG'>";
+  document.getElementById("popup").style.display = "block";
 }
 
+/* MUSICA */
+function music(){
+  window.open("https://www.youtube.com/watch?v=tTX6sJeZcmI", "_blank");
+}
+
+/* CLOSE */
 function closeP(){
   document.getElementById("popup").style.display = "none";
 }
