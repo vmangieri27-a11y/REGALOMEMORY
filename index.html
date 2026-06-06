@@ -74,9 +74,8 @@ button {
   width: 90px;
   cursor: pointer;
   margin: 10px;
-  transition: transform 0.2s;
+  filter: brightness(1.2);
 }
-.icon:hover { transform: scale(1.1); }
 
 /* MEMORY */
 .board {
@@ -114,7 +113,7 @@ button {
 }
 
 .popup img {
-  max-width: 220px;
+  max-width: 240px;
   border: 2px solid white;
   margin-top: 10px;
 }
@@ -148,17 +147,17 @@ button {
   <h1>QUESTI SONO PER TE 💝</h1>
 
   <div onclick="music()">
-    <img class="icon" src="https://cdn-icons-png.flaticon.com/512/727/727245.png">
+    <img class="icon" src="https://cdn-icons-png.flaticon.com/512/727/727240.png">
     <p>Canzone 🎵</p>
   </div>
 
   <div onclick="photo()">
-    <img class="icon" src="https://cdn-icons-png.flaticon.com/512/1077/1077114.png">
+    <img class="icon" src="https://cdn-icons-png.flaticon.com/512/1077/1077012.png">
     <p>Foto 📸</p>
   </div>
 
   <div onclick="gift()">
-    <img class="icon" src="https://cdn-icons-png.flaticon.com/512/107/107831.png">
+    <img class="icon" src="https://cdn-icons-png.flaticon.com/512/679/679720.png">
     <p>Regalo 🎁</p>
   </div>
 
@@ -235,6 +234,18 @@ function check(){
   }
 }
 
+/* MUSICA */
+function music(){
+  window.open("https://www.youtube.com/watch?v=tTX6sJeZcmI", "_blank");
+}
+
+/* FOTO */
+function photo(){
+  document.getElementById("content").innerHTML =
+    "<div>LA NOSTRA FOTO 💕</div><img src='foto_coppia.JPG'>";
+  document.getElementById("popup").style.display = "block";
+}
+
 /* REGALO */
 function gift(){
   document.getElementById("content").innerHTML =
@@ -247,22 +258,10 @@ function gift(){
       LEZIONE DI TENNIS 🎾
     </div>
 
-    <img src="https://cdn-icons-png.flaticon.com/512/1041/1041888.png">
+    <img src="IMG_3842.jpeg">
     `;
 
   document.getElementById("popup").style.display = "block";
-}
-
-/* FOTO */
-function photo(){
-  document.getElementById("content").innerHTML =
-    "<div>LA NOSTRA FOTO 💕</div><img src='foto_coppia.JPG'>";
-  document.getElementById("popup").style.display = "block";
-}
-
-/* MUSICA */
-function music(){
-  window.open("https://www.youtube.com/watch?v=tTX6sJeZcmI", "_blank");
 }
 
 /* CLOSE */
