@@ -69,12 +69,13 @@ button {
   margin-top: 15px;
 }
 
-/* ICON */
+/* ICONS STABILI */
 .icon {
-  width: 90px;
-  cursor: pointer;
+  width: 70px;
+  height: 70px;
   margin: 10px;
-  filter: brightness(1.2);
+  filter: drop-shadow(0 0 6px #ff4d6d);
+  cursor: pointer;
 }
 
 /* MEMORY */
@@ -122,13 +123,13 @@ button {
 
 <body>
 
-<!-- SCHERMATA 1 -->
+<!-- 1 -->
 <div class="screen active" id="s1">
   <h1>VUOI APRIRE IL REGALO?</h1>
   <button onclick="next(2)">SI ❤️</button>
 </div>
 
-<!-- SCHERMATA 2 -->
+<!-- 2 -->
 <div class="screen" id="s2">
   <h1>TI PROMETTO CHE TI PIACERÀ 💕</h1>
   <button onclick="next(3)">INIZIA 🎮</button>
@@ -136,7 +137,7 @@ button {
 
 <!-- MEMORY -->
 <div class="screen" id="s3">
-  <h1>MEMORY LEVEL 🎮</h1>
+  <h1>MEMORY 🎮</h1>
   <p>Trova tutte le coppie 💕</p>
   <div class="board" id="board"></div>
 </div>
@@ -146,18 +147,21 @@ button {
 
   <h1>QUESTI SONO PER TE 💝</h1>
 
+  <!-- MUSICA -->
   <div onclick="music()">
-    <img class="icon" src="https://cdn-icons-png.flaticon.com/512/727/727240.png">
+    <img class="icon" src="https://upload.wikimedia.org/wikipedia/commons/5/5f/Music_icon_%28white%29.svg">
     <p>Canzone 🎵</p>
   </div>
 
+  <!-- FOTO -->
   <div onclick="photo()">
-    <img class="icon" src="https://cdn-icons-png.flaticon.com/512/1077/1077012.png">
+    <img class="icon" src="https://upload.wikimedia.org/wikipedia/commons/3/3f/Photo_icon_white.svg">
     <p>Foto 📸</p>
   </div>
 
+  <!-- REGALO -->
   <div onclick="gift()">
-    <img class="icon" src="https://cdn-icons-png.flaticon.com/512/679/679720.png">
+    <img class="icon" src="https://upload.wikimedia.org/wikipedia/commons/8/8b/Gift_icon_white.svg">
     <p>Regalo 🎁</p>
   </div>
 
